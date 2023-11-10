@@ -170,6 +170,12 @@ var w1022h2e_vs22c = PackerTemplates_CreateWindows(
   $"2022.2202.{version}",
   w1022h2e
 );
+var w1122h2e_marat = PackerTemplates_CreateWindows(
+  "w1122h2e-marat",
+  "skuvault",
+  $"2022.2202.{version}",
+  w1122h2e
+);
 var w1122h2e_vs19c = PackerTemplates_CreateWindows(
   "w1122h2e-vs19c",
   "visual-studio-2019-community-windows-11",
