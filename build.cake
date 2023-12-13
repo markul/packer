@@ -54,6 +54,12 @@ var w1122h2e = PackerTemplates_CreateWindows(
   $"2202.0.{version}",
   aliases: new [] { "windows-11" }
 );
+var w1123h2e = PackerTemplates_CreateWindows(
+  "w1123h2e",
+  "windows-11-23h2-enterprise",
+  $"2202.0.{version}",
+  aliases: new [] { "windows-11" }
+);
 var w1121h2e = PackerTemplates_CreateWindows(
   "w1121h2e",
   "windows-11-21h2-enterprise",
@@ -175,6 +181,12 @@ var w1122h2e_marat = PackerTemplates_CreateWindows(
   "skuvault",
   $"2022.2202.{version}",
   w1122h2e
+);
+var w1123h2e_marat = PackerTemplates_CreateWindows(
+  "w1123h2e-marat",
+  "skuvault",
+  $"2022.2202.{version}",
+  w1123h2e
 );
 var w1122h2e_vs19c = PackerTemplates_CreateWindows(
   "w1122h2e-vs19c",
