@@ -7,6 +7,7 @@ marat_choco:
     pwsh:
     vscode:
     nodejs.install:
+    dotnet-7.0-sdk:
     dotnet-6.0-sdk:
     dotnet-5.0-sdk-4xx:
     sql-server-management-studio:

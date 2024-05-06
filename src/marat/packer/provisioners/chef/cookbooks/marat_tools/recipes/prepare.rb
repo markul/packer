@@ -1,3 +1,4 @@
+include_recipe 'gusztavvargadr_packer_w::prepare'
 
 powershell_script 'Disable Windows 11 Sleep Mode' do
   code <<-EOH
