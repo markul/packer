@@ -1,7 +1,7 @@
 name 'gusztavvargadr_packer_ubuntu'
 description 'Installs/Configures Packer Ubuntu'
 license 'Unlicense'
-maintainer 'Gusztáv Varga'
+maintainer 'Gusztav Varga'
 maintainer_email 'mail@gusztavvargadr.me'
 
 version '0.0.0'

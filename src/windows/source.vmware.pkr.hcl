@@ -9,7 +9,7 @@ packer {
 
 locals {
   vmware_source_options = {
-    version           = 20
+    version           = 16
     disk_type_id      = 0
     disk_adapter_type = "nvme"
     vmx_data = {

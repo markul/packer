@@ -1,0 +1,27 @@
+markul_windows:
+  features:
+    VirtualMachinePlatform:
+    Microsoft-Windows-Subsystem-Linux:
+markul_choco:
+  packages:
+    pwsh:
+    vscode:
+    nodejs.install:
+    dotnet-7.0-sdk:
+    dotnet-6.0-sdk:
+    dotnet-5.0-sdk-4xx:
+    sql-server-management-studio:
+    git:
+      options: '--params "/NoShellIntegration /SChannel /NoOpenSSH"'
+    dotultimate:
+      options: '--params "/PerMachine"'
+    googlechrome:
+      options: '--ignore-checksums'
+    visualstudio2022community:
+      options: '--quiet  --norestart '
+    visualstudio2022-workload-azure:
+    visualstudio2022-workload-netweb:
+    visualstudio2022-workload-manageddesktop:
+    docker-desktop:
+      options: '--ia "--quiet --accept-license"'
+      version: '4.23.0'

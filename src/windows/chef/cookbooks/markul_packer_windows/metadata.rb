@@ -1,8 +1,8 @@
-name 'gusztavvargadr_packer_windows'
+name 'markul_packer_windows'
 description 'Installs/Configures Packer Windows'
 license 'Unlicense'
-maintainer 'Gusztav Varga'
-maintainer_email 'mail@gusztavvargadr.me'
+maintainer 'Marat Kulmukhgametov'
+maintainer_email 'marat@markul.net'
 
 version '0.0.0'
 depends 'gusztavvargadr_windows'
