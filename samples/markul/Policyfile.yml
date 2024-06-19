@@ -1,12 +1,12 @@
-markul_windows:
-  features:
+markul:
+  windows_features:
     VirtualMachinePlatform:
     Microsoft-Windows-Subsystem-Linux:
-markul_choco:
-  packages:
+  choco_packages:
     pwsh:
     vscode:
     nodejs.install:
+      version: '20.13.1'
     dotnet-7.0-sdk:
     dotnet-6.0-sdk:
     dotnet-5.0-sdk-4xx:
