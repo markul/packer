@@ -11,9 +11,10 @@ images = {
     }
 
     vagrant = {
-      cpus      = "4"
+      cpus      = "6"
       memory    = "8192"
       box_alias = "windows-11-dev"
+      ports = "3389"
     }
   }
 }
