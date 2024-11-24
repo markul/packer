@@ -13,8 +13,7 @@ markul:
     sql-server-management-studio:
     git:
       options: '--params "/NoShellIntegration /SChannel /NoOpenSSH"'
-    dotultimate:
-      options: '--params "/PerMachine"'
+    jetbrains-rider:
     googlechrome:
       options: '--ignore-checksums'
     visualstudio2022community:

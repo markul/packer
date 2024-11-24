@@ -6,7 +6,7 @@ locals {
     headless         = true
     output_directory = "${local.artifacts_directory}/image"
 
-    cpus      = 4
+    cpus      = 6
     memory    = 8192
     disk_size = 130048
 
