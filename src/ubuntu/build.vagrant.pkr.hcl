@@ -1,7 +1,7 @@
 packer {
   required_plugins {
     vagrant = {
-      version = "~> 1.1"
+      version = "~> 1.1.4"
       source  = "github.com/hashicorp/vagrant"
     }
   }
@@ -139,12 +139,13 @@ build {
       files = ["${local.artifacts_directory}/vagrant/vagrant.box"]
     }
 
-    post-processor "vagrant-cloud" {
+    post-processor "vagrant-registry" {
       box_tag              = "${local.image_author}/${lookup(local.vagrant_options, "box_name", replace(local.image_name, "/", "-"))}"
       version              = local.image_version
-      box_checksum         = "sha256:${split("\t", file("${local.artifacts_directory}/checksum.sha256"))[0]}"
+      box_checksum         = "SHA256:${split("\t", file("${local.artifacts_directory}/checksum.sha256"))[0]}"
       architecture         = local.vagrant_options.architecture
       default_architecture = local.vagrant_options.architecture
+      // no_release           = true
     }
   }
 
@@ -156,14 +157,45 @@ build {
         files = ["${local.artifacts_directory}/vagrant/vagrant.box"]
       }
 
-      post-processor "vagrant-cloud" {
+      post-processor "vagrant-registry" {
         box_tag              = "${local.image_author}/${post-processors.value}"
         version              = local.image_version
-        box_download_url     = "https://app.vagrantup.com/${local.image_author}/boxes/${lookup(local.vagrant_options, "box_name", replace(local.image_name, "/", "-"))}/versions/${local.image_version}/providers/${lookup(local.vagrant_providers, local.image_provider, "")}/${local.vagrant_options.architecture}/vagrant.box"
-        box_checksum         = "sha256:${split("\t", file("${local.artifacts_directory}/checksum.sha256"))[0]}"
+        box_download_url     = "https://api.hashicorp.cloud/vagrant/2022-08-01/${local.image_author}/boxes/${lookup(local.vagrant_options, "box_name", replace(local.image_name, "/", "-"))}/versions/${local.image_version}/providers/${lookup(local.vagrant_providers, local.image_provider, "")}/${local.vagrant_options.architecture}/vagrant.box"
+        box_checksum         = "SHA256:${split("\t", file("${local.artifacts_directory}/checksum.sha256"))[0]}"
         architecture         = local.vagrant_options.architecture
         default_architecture = local.vagrant_options.architecture
+        // no_release           = true
       }
     }
+  }
+}
+
+build {
+  name = "vagrant-download"
+
+  sources = ["null.core"]
+
+  provisioner "shell-local" {
+    inline = [
+      "vagrant destroy -f ${var.image}",
+    ]
+
+    valid_exit_codes = [0, 1]
+  }
+
+  provisioner "shell-local" {
+    inline = [
+      "vagrant up ${var.image} --provider ${lookup(local.vagrant_providers, local.image_provider, "")}",
+    ]
+
+    max_retries = 1
+  }
+
+  provisioner "shell-local" {
+    inline = [
+      "vagrant destroy -f ${var.image}",
+    ]
+
+    valid_exit_codes = [0, 1]
   }
 }

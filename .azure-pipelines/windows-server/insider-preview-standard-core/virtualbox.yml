@@ -5,5 +5,5 @@ stages:
   - template: ../../stages.yml
     parameters:
       sample: windows-server
-      image: 2019-standard-core
-      provider: hyperv
+      image: insider-preview-standard-core
+      provider: virtualbox

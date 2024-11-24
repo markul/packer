@@ -9,9 +9,14 @@ jobs:
     displayName: Build ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }}
 
     pool:
-      name: default
-      demands:
-        - VSTS_AGENT_CAP_VIRTUALIZATION_PROVIDER -equals ${{ parameters.provider }}
+      ${{ if eq(parameters.provider, 'hyperv') }}:
+        name: windows-2022-hyperv
+      ${{ elseif eq(parameters.provider, 'virtualbox') }}:
+        name: ubuntu-2204-virtualbox
+      ${{ else }}:
+        name: default
+        demands:
+          - VSTS_AGENT_CAP_VIRTUALIZATION_PROVIDER -equals ${{ parameters.provider }}
 
     workspace:
       clean: all
@@ -48,7 +53,7 @@ jobs:
         displayName: Init
 
       - script: |
-          dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target restore --exclusive
+          dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target restore
         displayName: Restore
 
       - ${{ if eq(parameters.build, 'native') }}:
@@ -73,11 +78,11 @@ jobs:
           displayName: Download artifacts
 
       - script: |
-          dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target build --exclusive
+          dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target build
         displayName: Build
 
       - script: |
-          dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target test --exclusive
+          dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target test
         displayName: Test
 
       - publish: ./artifacts/${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }}
@@ -96,22 +101,18 @@ jobs:
       condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
 
       pool:
-        vmImage: ubuntu-22.04
+        name: default
+
+      workspace:
+        clean: all
 
       variables:
-        - group: environment-vagrantcloud
+        - group: environment-vagrant-cloud
+        - group: environment-hcp-vagrant
 
       steps:
         - checkout: self
           submodules: recursive
-
-        - script: |
-            df -h
-
-            sudo rm -Rf /usr/local/lib/android
-            sudo rm -Rf /usr/local/lib/node_modules
-            df -h
-          displayName: Initialize agent
 
         - script: |
             dotnet --info
@@ -122,6 +123,14 @@ jobs:
         - script: |
             packer --version
           displayName: Initialize Packer
+
+        - script: |
+            vagrant --version
+            vagrant plugin list
+
+            vagrant box list
+            vagrant global-status --prune
+          displayName: Initialize Vagrant
 
         - script: |
             dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target init
@@ -135,10 +144,65 @@ jobs:
           displayName: Download artifacts
 
         - script: |
-            dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target publish --exclusive
+            dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target publish
           displayName: Publish
           env:
-            VAGRANT_CLOUD_TOKEN: $(environment-vagrant-cloud-token)
+            VAGRANT_CLOUD_TOKEN: $(vagrant-cloud-token)
+            HCP_CLIENT_ID: $(hcp-client-id)
+            HCP_CLIENT_SECRET: $(hcp-client-secret)
+
+        - script: |
+            dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target clean
+          displayName: Clean
+          condition: always()
+
+    - job: download
+      displayName: Download ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }}
+      dependsOn: publish
+      condition: and(succeeded(), eq(variables['Build.SourceBranch'], 'refs/heads/master'))
+
+      pool:
+        ${{ if eq(parameters.provider, 'hyperv') }}:
+          name: windows-2022-hyperv
+        ${{ elseif eq(parameters.provider, 'virtualbox') }}:
+          name: ubuntu-2204-virtualbox
+        ${{ else }}:
+          name: default
+          demands:
+            - VSTS_AGENT_CAP_VIRTUALIZATION_PROVIDER -equals ${{ parameters.provider }}
+
+      workspace:
+        clean: all
+
+      steps:
+        - checkout: self
+          submodules: recursive
+
+        - script: |
+            dotnet --info
+
+            dotnet tool restore
+          displayName: Initialize .NET
+
+        - script: |
+            packer --version
+          displayName: Initialize Packer
+
+        - script: |
+            vagrant --version
+            vagrant plugin list
+
+            vagrant box list
+            vagrant global-status --prune
+          displayName: Initialize Vagrant
+
+        - script: |
+            dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target init
+          displayName: Init
+
+        - script: |
+            dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target download
+          displayName: Download
 
         - script: |
             dotnet cake --configuration ${{ parameters.sample }}/${{ parameters.image }}/${{ parameters.provider }}/${{ parameters.build }} --target clean

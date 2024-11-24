@@ -10,9 +10,9 @@ See the links below for the details of the available images:
 
 ## Community Ubuntu Server
 
-[Vagrant box](https://app.vagrantup.com/gusztavvargadr/boxes/docker-community-ubuntu-server) | [Vagrant alias](https://app.vagrantup.com/gusztavvargadr/boxes/docker-linux)  
+[Vagrant box](https://portal.cloud.hashicorp.com/vagrant/discover/gusztavvargadr/docker-community-ubuntu-server) | [Vagrant alias](https://portal.cloud.hashicorp.com/vagrant/discover/gusztavvargadr/docker-linux)  
 
 The template has the following settings:
 
-- [**Ubuntu Server 22.04 LTS**](../ubuntu-server/README.md#2204-lts)
+- [**Ubuntu Server 24.04 LTS**](../ubuntu-server/README.md#2404-lts)
 - [**Docker Engine**](https://docs.docker.com/engine/)

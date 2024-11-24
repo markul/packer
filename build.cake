@@ -2,7 +2,7 @@ var configuration = Argument("configuration", string.Empty);
 var target = Argument("target", "default");
 
 var author = Argument("author", "gusztavvargadr");
-var version = Argument("version", "2404");
+var version = Argument("version", "2409");
 
 var configurationParts = configuration.Split('/', StringSplitOptions.RemoveEmptyEntries);
 var sample = configurationParts.ElementAtOrDefault(0) ?? Argument<string>("sample");
@@ -22,27 +22,28 @@ Task("init")
   });
 
 Task("restore")
-  .IsDependentOn("init")
   .Does(() => {
     PackerBuild("restore");
   });
 
 Task("build")
-  .IsDependentOn("restore")
   .Does(() => {
     PackerBuild("build");
   });
 
 Task("test")
-  .IsDependentOn("build")
   .Does(() => {
     PackerBuild("test");
   });
 
 Task("publish")
-  .IsDependentOn("test")
   .Does(() => {
     PackerBuild("publish");
+  });
+
+Task("download")
+  .Does(() => {
+    PackerBuild("download");
   });
 
 Task("clean")
@@ -51,6 +52,9 @@ Task("clean")
   });
 
 Task("default")
+  .IsDependentOn("init")
+  .IsDependentOn("restore")
+  .IsDependentOn("build")
   .IsDependentOn("test");
 
 RunTarget(target);

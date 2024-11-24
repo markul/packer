@@ -4,6 +4,6 @@ pr: none
 stages:
   - template: ../../stages.yml
     parameters:
-      sample: windows-10
-      image: 1809-enterprise-ltsc
+      sample: windows-11
+      image: insider-preview-enterprise
       provider: virtualbox

@@ -4,6 +4,6 @@ pr: none
 stages:
   - template: ../../stages.yml
     parameters:
-      sample: windows-server
-      image: 2019-standard
+      sample: windows-11
+      image: 24h2-enterprise
       provider: virtualbox

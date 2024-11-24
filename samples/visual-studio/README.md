@@ -8,12 +8,12 @@ See the links below for the details of the available images:
 
 - [2022 Community Windows 11](#2022-community-windows-11)
 - [2022 Community Windows 10](#2022-community-windows-10)
-- [2019 Community Windows 11](#2019-community-windows-11)
-- [2019 Community Windows 10](#2019-community-windows-10)
+- ~~[2019 Community Windows 11](#2019-community-windows-11) Deprecated~~
+- ~~[2019 Community Windows 10](#2019-community-windows-10) Deprecated~~
 
 ## 2022 Community Windows 11
 
-[Vagrant box](https://app.vagrantup.com/gusztavvargadr/boxes/visual-studio-2022-community-windows-11) | [Vagrant alias](https://app.vagrantup.com/gusztavvargadr/boxes/visual-studio)  
+[Vagrant box](https://portal.cloud.hashicorp.com/vagrant/discover/gusztavvargadr/visual-studio-2022-community-windows-11) | [Vagrant alias](https://portal.cloud.hashicorp.com/vagrant/discover/gusztavvargadr/visual-studio)  
 
 The template has the following settings:
 
@@ -31,7 +31,7 @@ The template has the following settings:
 
 ## 2022 Community Windows 10
 
-[Vagrant box](https://app.vagrantup.com/gusztavvargadr/boxes/visual-studio-2022-community-windows-10)  
+[Vagrant box](https://portal.cloud.hashicorp.com/vagrant/discover/gusztavvargadr/visual-studio-2022-community-windows-10)  
 
 The template has the following settings:
 
@@ -49,7 +49,9 @@ The template has the following settings:
 
 ## 2019 Community Windows 11
 
-[Vagrant box](https://app.vagrantup.com/gusztavvargadr/boxes/visual-studio-2019-community-windows-11)  
+**This template is ~~deprecated~~. Please use one of the other templates.**
+
+[Vagrant box](https://portal.cloud.hashicorp.com/vagrant/discover/gusztavvargadr/visual-studio-2019-community-windows-11)  
 
 The template has the following settings:
 
@@ -67,7 +69,9 @@ The template has the following settings:
 
 ## 2019 Community Windows 10
 
-[Vagrant box](https://app.vagrantup.com/gusztavvargadr/boxes/visual-studio-2019-community-windows-10)  
+**This template is ~~deprecated~~. Please use one of the other templates.**
+
+[Vagrant box](https://portal.cloud.hashicorp.com/vagrant/discover/gusztavvargadr/visual-studio-2019-community-windows-10)  
 
 The template has the following settings:
 

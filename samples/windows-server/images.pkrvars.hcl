@@ -18,7 +18,7 @@ images = {
     }
 
     virtualbox = {
-      guest_os_type = "Windows2019_64"
+      guest_os_type = "Windows2022_64"
     }
 
     vmware = {
@@ -45,7 +45,7 @@ images = {
     }
 
     virtualbox = {
-      guest_os_type = "Windows2019_64"
+      guest_os_type = "Windows2022_64"
     }
 
     vmware = {
@@ -84,9 +84,9 @@ images = {
     }
 
     native = {
-      source_iso_url_local      = "17763.737.190906-2324.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us_1.iso"
-      source_iso_url_remote     = "https://software-download.microsoft.com/download/pr/17763.737.190906-2324.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us_1.iso"
-      source_iso_checksum       = "sha256:549bca46c055157291be6c22a3aaaed8330e78ef4382c99ee82c896426a1cee1"
+      source_iso_url_local  = "17763.737.190906-2324.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us_1.iso"
+      source_iso_url_remote = "https://software-download.microsoft.com/download/pr/17763.737.190906-2324.rs5_release_svc_refresh_SERVER_EVAL_x64FRE_en-us_1.iso"
+      source_iso_checksum   = "sha256:549bca46c055157291be6c22a3aaaed8330e78ef4382c99ee82c896426a1cee1"
 
       boot_image_name         = "Windows Server 2019 SERVERSTANDARDCORE"
       boot_chocolatey_version = "1.4.0"
@@ -108,16 +108,16 @@ images = {
     }
 
     native = {
-      source_iso_url_local  = "Windows_InsiderPreview_Server_vNext_en-us_26085.iso"
-      source_iso_url_remote = "https://app.vagrantup.com/gusztavvargadr-iso/boxes/windows-server-insider-preview/versions/2302.0.2403/providers/iso/amd64/vagrant.box"
-      source_iso_checksum   = "sha256:c4d94b3daf0a36c7db1b29434381ed2d4f44a7ad45669927453ee7039e4df076"
+      source_iso_url_local  = "Windows_InsiderPreview_Server_vNext_en-us_26296.iso"
+      source_iso_url_remote = "https://api.hashicorp.cloud/vagrant/2022-08-01/gusztavvargadr-iso/boxes/windows-server-insider-preview/versions/2402.0.2409/providers/iso/amd64/vagrant.box"
+      source_iso_checksum   = "sha256:05713d5d6aadfb52d84a36836c46ba99396be3217ca2434ca0a5c4c824571a43"
 
-      boot_image_name     = "Windows Server 2025 SERVERSTANDARD"
-      boot_product_key    = "MFY9F-XBN2F-TYFMP-CCV49-RMYVH"
+      boot_image_name  = "Windows Server 2025 SERVERSTANDARD"
+      boot_product_key = "MFY9F-XBN2F-TYFMP-CCV49-RMYVH"
     }
 
     virtualbox = {
-      guest_os_type = "Windows2019_64"
+      guest_os_type = "Windows2022_64"
     }
 
     vmware = {
@@ -132,16 +132,16 @@ images = {
     }
 
     native = {
-      source_iso_url_local  = "Windows_InsiderPreview_Server_vNext_en-us_26085.iso"
-      source_iso_url_remote = "https://app.vagrantup.com/gusztavvargadr-iso/boxes/windows-server-insider-preview/versions/2302.0.2403/providers/iso/amd64/vagrant.box"
-      source_iso_checksum   = "sha256:c4d94b3daf0a36c7db1b29434381ed2d4f44a7ad45669927453ee7039e4df076"
+      source_iso_url_local  = "Windows_InsiderPreview_Server_vNext_en-us_26296.iso"
+      source_iso_url_remote = "https://api.hashicorp.cloud/vagrant/2022-08-01/gusztavvargadr-iso/boxes/windows-server-insider-preview/versions/2402.0.2409/providers/iso/amd64/vagrant.box"
+      source_iso_checksum   = "sha256:05713d5d6aadfb52d84a36836c46ba99396be3217ca2434ca0a5c4c824571a43"
 
-      boot_image_name     = "Windows Server 2025 SERVERSTANDARDCORE"
-      boot_product_key    = "MFY9F-XBN2F-TYFMP-CCV49-RMYVH"
+      boot_image_name  = "Windows Server 2025 SERVERSTANDARDCORE"
+      boot_product_key = "MFY9F-XBN2F-TYFMP-CCV49-RMYVH"
     }
 
     virtualbox = {
-      guest_os_type = "Windows2019_64"
+      guest_os_type = "Windows2022_64"
     }
 
     vmware = {

@@ -4,6 +4,6 @@ pr: none
 stages:
   - template: ../../stages.yml
     parameters:
-      sample: windows-10
-      image: 21h2-enterprise
+      sample: windows-11
+      image: 24h2-enterprise
       provider: hyperv
