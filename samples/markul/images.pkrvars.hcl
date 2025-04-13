@@ -7,7 +7,7 @@ images = {
     }
 
     native = {
-      source_image = "windows-11/23h2-enterprise"
+      source_image = "windows-11/24h2-enterprise"
     }
 
     vagrant = {

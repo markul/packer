@@ -7,6 +7,7 @@ markul:
     vscode:
     nodejs.install:
       version: '20.13.1'
+    dotnet-8.0-sdk:
     dotnet-7.0-sdk:
     dotnet-6.0-sdk:
     dotnet-5.0-sdk-4xx:
