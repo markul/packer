@@ -4,11 +4,11 @@ pr: none
 resources:
   pipelines:
     - pipeline: source
-      source: windows-11.24h2-enterprise.vmware
+      source: ubuntu-server.2404-lts.vmware
 
 stages:
   - template: ../../stages.yml
     parameters:
-      sample: visual-studio
-      image: 2022-community-windows-11
+      sample: development-ubuntu
+      image: "2404"
       provider: vmware

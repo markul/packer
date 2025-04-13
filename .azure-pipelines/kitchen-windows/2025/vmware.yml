@@ -4,11 +4,11 @@ pr: none
 resources:
   pipelines:
     - pipeline: source
-      source: windows-11.24h2-enterprise.vmware
+      source: windows-server.2025-standard.vmware
 
 stages:
   - template: ../../stages.yml
     parameters:
-      sample: visual-studio
-      image: 2022-community-windows-11
+      sample: kitchen-windows
+      image: "2025"
       provider: vmware

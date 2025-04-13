@@ -3,26 +3,21 @@ apt_update '' do
 end
 
 if hyperv?
-  apt_package [ 'linux-image-virtual', 'linux-tools-virtual', 'linux-cloud-tools-virtual' ] do
-    action :upgrade
+  apt_package [ 'linux-azure' ] do
+    action :install
     notifies :request_reboot, 'reboot[gusztavvargadr_packer_ubuntu]', :immediately
-  end
-
-  apt_package [ 'linux-tools-generic', 'linux-cloud-tools-generic' ] do
-    action :upgrade
   end
 end
 
 if vbox?
+  kernel_version = shell_out('uname -r').stdout.strip
+  apt_package [ 'build-essential', 'dkms', "linux-headers-#{kernel_version}" ] do
+    action :install
+  end
+
   vbox_version = (shell_out('VBoxControl -v').stdout rescue '').strip
 
   unless vbox_version.include?('6.') || vbox_version.include?('7.')
-    apt_package [ 'build-essential', 'cryptsetup', 'libssl-dev', 'libreadline-dev', 'zlib1g-dev', 'linux-source', 'dkms', 'linux-headers-generic' ] do
-      action :upgrade
-      notifies :run, 'bash[guest-additions]', :immediately
-      notifies :request_reboot, 'reboot[gusztavvargadr_packer_ubuntu]', :immediately
-    end
-
     bash 'guest-additions' do
       code <<-EOH
         VER="`cat /home/vagrant/.vbox_version`";
@@ -37,19 +32,16 @@ if vbox?
         rm -rf /tmp/vbox;
         rm -f *.iso;
 EOH
-      action :nothing
+      action :run
+      notifies :request_reboot, 'reboot[gusztavvargadr_packer_ubuntu]', :immediately
     end
   end
 end
 
 if vmware?
-  vmware_version = (shell_out('vmware-toolbox-cmd -v').stdout rescue '').strip
-
-  unless vmware_version.include?('12.')
-    apt_package [ 'open-vm-tools', 'open-vm-tools-desktop' ] do
-      action :upgrade
-      notifies :request_reboot, 'reboot[gusztavvargadr_packer_ubuntu]', :immediately
-    end
+  apt_package [ 'open-vm-tools', 'open-vm-tools-desktop' ] do
+    action :install
+    notifies :request_reboot, 'reboot[gusztavvargadr_packer_ubuntu]', :immediately
   end
 end
 

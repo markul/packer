@@ -4,11 +4,11 @@ pr: none
 resources:
   pipelines:
     - pipeline: source
-      source: windows-server.2025-standard-core.hyperv
+      source: ubuntu-server.2404-lts.hyperv
 
 stages:
   - template: ../../stages.yml
     parameters:
-      sample: docker-windows
-      image: community-windows-server-core
+      sample: development-ubuntu
+      image: "2404"
       provider: hyperv
