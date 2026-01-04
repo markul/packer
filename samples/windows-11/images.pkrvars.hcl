@@ -1,14 +1,13 @@
-images = {
-  "24h2-enterprise" = {
+images = {  
+  "25h2-enterprise" = {
     core = {
-      image_description = "Windows 11 Version 24H2 Enterprise"
-      image_version     = "2402.0"
+      image_description = "Windows 11 Version 25H2 Enterprise"
     }
 
     native = {
-      source_iso_url_local  = "26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
-      source_iso_url_remote = "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
-      source_iso_checksum   = "sha256:755a90d43e826a74b9e1932a34788b898e028272439b777e5593dee8d53622ae"
+      source_iso_url_local  = "26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
+      source_iso_url_remote = "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26200.6584.250915-1905.25h2_ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
+      source_iso_checksum   = "sha256:a61adeab895ef5a4db436e0a7011c92a2ff17bb0357f58b13bbc4062e535e7b9"
 
       boot_setup_script = "setup.cmd"
     }
@@ -27,19 +26,17 @@ images = {
     }
   }
 
-  "24h2-enterprise-ltsc" = {
+  "24h2-enterprise" = {
     core = {
       image_description = "Windows 11 Version 24H2 Enterprise"
-      image_version     = "2402.0"
     }
 
     native = {
-      source_iso_url_local  = "26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_LTSC_EVAL_x64FRE_en-us.iso"
-      source_iso_url_remote = "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_LTSC_EVAL_x64FRE_en-us.iso"
-      source_iso_checksum   = "sha256:67cec5865eaa037a72ddc633a717a10a2bed50778862267223ddb9c60ef5da68"
+      source_iso_url_local  = "26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
+      source_iso_url_remote = "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1742.240906-0331.ge_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
+      source_iso_checksum   = "sha256:755a90d43e826a74b9e1932a34788b898e028272439b777e5593dee8d53622ae"
 
       boot_setup_script = "setup.cmd"
-      boot_image_name = "Windows 11 Enterprise LTSC Evaluation"
     }
 
     vagrant = {
@@ -58,7 +55,6 @@ images = {
   "23h2-enterprise" = {
     core = {
       image_description = "Windows 11 Version 23H2 Enterprise"
-      image_version     = "2302.0"
     }
 
     native = {
@@ -85,7 +81,6 @@ images = {
   "22h2-enterprise" = {
     core = {
       image_description = "Windows 11 Version 22H2 Enterprise"
-      image_version     = "2202.0"
     }
 
     native = {
@@ -109,22 +104,22 @@ images = {
     }
   }
 
-  "21h2-enterprise" = {
+  "24h2-enterprise-ltsc" = {
     core = {
-      image_description = "Windows 11 Version 21H2 Enterprise"
-      image_version     = "2102.0"
+      image_description = "Windows 11 Version 24H2 Enterprise"
     }
 
     native = {
-      source_iso_url_local  = "22000.194.210913-1444.co_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
-      source_iso_url_remote = "https://software-download.microsoft.com/download/sg/22000.194.210913-1444.co_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso"
-      source_iso_checksum   = "sha256:e8b1d2a1a85a09b4bf6154084a8be8e3c814894a15a7bcf3e8e63fcfa9a528cb"
+      source_iso_url_local  = "26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_LTSC_EVAL_x64FRE_en-us.iso"
+      source_iso_url_remote = "https://software-static.download.prss.microsoft.com/dbazure/888969d5-f34g-4e03-ac9d-1f9786c66749/26100.1742.240906-0331.ge_release_svc_refresh_CLIENT_LTSC_EVAL_x64FRE_en-us.iso"
+      source_iso_checksum   = "sha256:67cec5865eaa037a72ddc633a717a10a2bed50778862267223ddb9c60ef5da68"
 
       boot_setup_script = "setup.cmd"
+      boot_image_name = "Windows 11 Enterprise LTSC Evaluation"
     }
 
     vagrant = {
-      memory = "4096"
+      memory    = "4096"
     }
 
     virtualbox = {
@@ -139,13 +134,12 @@ images = {
   "insider-preview-enterprise" = {
     core = {
       image_description = "Windows 11 Insider Preview Enterprise"
-      image_version     = "2402.0"
     }
 
     native = {
-      source_iso_url_local  = "Windows11_InsiderPreview_EnterpriseVL_x64_en-us_27774.iso"
-      source_iso_url_remote = "https://api.hashicorp.cloud/vagrant/2022-08-01/gusztavvargadr-iso/boxes/windows-11-insider-preview/versions/2402.0.2503/providers/iso/amd64/vagrant.box"
-      source_iso_checksum   = "sha256:2957bd376379314d86befac4e15b984d46c5a09272026ab17ec0c30d66095b87"
+      source_iso_url_local  = "Windows11_InsiderPreview_EnterpriseVL_x64_en-us_27924.iso"
+      source_iso_url_remote = "https://api.hashicorp.cloud/vagrant/2022-08-01/gusztavvargadr-iso/boxes/windows-11-insider-preview/versions/2511.0.0/providers/iso/amd64/vagrant.box"
+      source_iso_checksum   = "sha256:c5ab29789cd753ae6d0d63936aeee55537cd061861db697e15fbe688b7720d39"
 
       boot_setup_script = "setup.cmd"
       boot_image_name   = "Windows 11 Enterprise"
