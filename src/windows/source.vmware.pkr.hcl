@@ -16,6 +16,14 @@ locals {
       firmware        = "efi"
       "vhv.enable"    = "FALSE"
       "sata1.present" = "TRUE"
+      "RemoteDisplay.vnc.enabled"  = "TRUE"
+      "RemoteDisplay.vnc.port"     = "5901"
+    }
+    vnc_port_min     = "5901"
+    vnc_port_max     = "5901"
+    vmx_data_post = {
+      "RemoteDisplay.vnc.enabled"  = "TRUE"
+      "RemoteDisplay.vnc.port"     = "5901"
     }
     vmx_remove_ethernet_interfaces = local.native_build ? false : true
   }
@@ -53,6 +61,10 @@ source "vmware-iso" "core" {
   ssh_username   = local.communicator.username
   ssh_password   = local.communicator.password
   ssh_timeout    = local.communicator.timeout
+  vnc_port_min     = local.vmware_iso_source_options.vnc_port_min
+  vnc_port_max     = local.vmware_iso_source_options.vnc_port_max
+  vnc_disable_password = "true"
+  vmx_data_post = local.vmware_iso_source_options.vmx_data_post
 }
 
 locals {
@@ -77,4 +89,9 @@ source "vmware-vmx" "core" {
   ssh_username   = local.communicator.username
   ssh_password   = local.communicator.password
   ssh_timeout    = local.communicator.timeout
+
+  vnc_port_min     = local.vmware_iso_source_options.vnc_port_min
+  vnc_port_max     = local.vmware_iso_source_options.vnc_port_max
+  vnc_disable_password = "true"
+  vmx_data_post = local.vmware_iso_source_options.vmx_data_post
 }
